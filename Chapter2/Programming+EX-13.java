@@ -24,8 +24,8 @@ class monthlySavingsProgram {
 		double savingsMonthFive = (100 + savingsMonthFour) * (1 + (0.00417));
 		double savingsMonthSix = (100 + savingsMonthFive) * (1 + (0.00417));
 		
-		System.out.print("You savings after 6 months = " + savingsMonthSix);
-		System.out.print("You savings after 3 months = " + savingsMonthThree);
+		System.out.println("Your savings after 6 months = " + savingsMonthSix);
+		System.out.println("Your savings after 3 months = " + savingsMonthThree);
 		input.close();
 		
 	}
