@@ -16,14 +16,12 @@ class ThreeEdgeTriangleReader {
 		System.out.print("Edge 3 =");
 		double edge3 = input.nextDouble();
 		
-		if ((edge1 + edge2 > edge3) || (edge2 + edge3 > edge1) || (edge3 + edge1 > edge2)){
+		if ((edge1 + edge2 > edge3) && (edge2 + edge3 > edge1) && (edge3 + edge1 > edge2)){
 			System.out.print("Input is valid");
 		}
-			else if ((edge1 + edge2 < edge3) || (edge2 + edge3 < edge1) || (edge3 + edge1 < edge2)){
-					System.out.print("Input is invalid");
+			else {
+				System.out.print("Input is invalid");
 		}
-		
-		
 		
 		input.close();
 		
