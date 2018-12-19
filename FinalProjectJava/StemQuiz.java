@@ -7,17 +7,16 @@ This survey asks users a variety of questions pertaining to STEM. After the user
 import java.util.Scanner;
 
 class CapitalQuiz {
-		public static void main(String[] args) {
-			Scanner input = new Scanner(System.in);
-			int scienceCount = 0;
-			int techCount = 0;
-			int engineeringCount = 0;
-			int mathCount = 0;
-			int[] stemCount = {1,2,3,4};
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int scienceCount = 0;
+		int techCount = 0;
+		int engineeringCount = 0;
+		int mathCount = 0;
 
-//This string contains each individual stem question. If you'd like to add more questions, simply add them towards the bottom of the list.		
+		//This string contains each individual stem question. If you'd like to add more questions, simply add them towards the bottom of the list.		
 			
-			String[] stemQuestions = 
+		String[] stemQuestions = 
 			{"I love learning about rockets. ",
 			"I really enjoy drawing. ",
 			"I like watching science fiction movies. ",
@@ -44,56 +43,61 @@ class CapitalQuiz {
 			"I like learning about how the pyramids were built"
 			};
 
-//This array contains a STEM class identifier for each question. 0-Science, 1-Tech, 2-Engineering, 3-Mathematics...
+		//This array contains a STEM class identifier for each question. 0-Science, 1-Tech, 2-Engineering, 3-Mathematics...
 						
-			int[] questionClass = {2,2,0,1,2,0,3,2,1,0,0,3,3,2,3,1,2,0,2,3,1,0,0,3};
+		String[] questionClass = {"23", "21", "01", "101", "23", "03", "23", "2", "1", "03", "01", "3", "3", "2", "03", "10", "21", "02", "2", "3", "10", "0", "02", "32"};
 			
 		
 			
-			System.out.print("Enter Y or N to the following questions: ");
+		System.out.println("Enter Y or N to the following questions:");
 			
-//This for loop runs through the array of questions, and determines the count of each STEM topic. The count relates to whether not the user enters a Yes or No. If Yes, 1 is added to the count.		
+		//This for loop runs through the array of questions, and determines the count of each STEM topic. The count relates to whether not the user enters a Yes or No. If Yes, 1 is added to the count.		
 			
-			for (int i = 0; i < stemQuestions.length; i++) {
-				System.out.println(stemQuestions[i]);
-				String answer = input.nextLine();
-				
-				if (answer.equals("y")) {
-				
-					if (questionClass[i] == 0) {
+		for (int i = 0; i < stemQuestions.length; i++) {
+			System.out.println(stemQuestions[i]);
+			String answer = input.nextLine();
+			
+			while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+				System.out.print("Please enter a \"Y\" or \"N\": ");
+				answer = input.nextLine();
+			}
+			
+			if (answer.equalsIgnoreCase("y")) {
+
+				if (questionClass[i].contains("0")) {
 					scienceCount = scienceCount + 1;
-					}
-					else if (questionClass[i] == 1) {
+				}
+				if (questionClass[i].contains("1")) {
 					techCount = techCount + 1;
-					}
-					else if (questionClass[i] == 2) {
+				}
+				if (questionClass[i].contains("2")) {
 					engineeringCount = engineeringCount + 1;
-					}
-					else {
+				}
+				if (questionClass[i].contains("3")) {
 					mathCount = mathCount + 1;
-					}
 				}
 			}
-			if (scienceCount >= techCount && scienceCount >= engineeringCount && scienceCount >= mathCount) {
-				System.out.println("You have an affinity towards Science!");
-				System.out.println("Here's a list of jobs that might interest you:");
-				System.out.println("Biochemist, Neuroscientist, Physicist, Doctor, Genetecist.");
-			}
-			else if (techCount >= scienceCount && techCount >= engineeringCount && techCount >= mathCount) {
-				System.out.println("You have an affinity towards Technology!");
-				System.out.println("Here's a list of jobs that might interest you:");
-				System.out.println("Information Security Analyst, Software Developer, IT Manager, Computer Systems Analyst, Computer Network Architect.");
-			}
-			else if (engineeringCount >= scienceCount && engineeringCount >= techCount && engineeringCount >= mathCount) {
-				System.out.println("You have an affinity towards Engineering!");
-				System.out.println("Here's a list of jobs that might interest you:");
-				System.out.println("Civil Engineer, Electrical Engineer, Environmental Engineer, Industrial Engineer, and Mechanical Engineer.");
-			}
-			else {
-				System.out.println("You have an affinity towards Mathematics!");
-				System.out.println("Here's a list of jobs that might interest you:");
-				System.out.println("Data Analyst, Actuary, Statistician, Game Designer, Data Scientist.");
-				
-			}
+		}
+		if (scienceCount >= techCount && scienceCount >= engineeringCount && scienceCount >= mathCount) {
+			System.out.println("You have an affinity towards Science!");
+			System.out.println("Here's a list of jobs that might interest you:");
+			System.out.println("Biochemist, Neuroscientist, Physicist, Doctor, Genetecist.");
+		}
+		else if (techCount >= scienceCount && techCount >= engineeringCount && techCount >= mathCount) {
+			System.out.println("You have an affinity towards Technology!");
+			System.out.println("Here's a list of jobs that might interest you:");
+			System.out.println("Information Security Analyst, Software Developer, IT Manager, Computer Systems Analyst, Computer Network Architect.");
+		}
+		else if (engineeringCount >= scienceCount && engineeringCount >= techCount && engineeringCount >= mathCount) {
+			System.out.println("You have an affinity towards Engineering!");
+			System.out.println("Here's a list of jobs that might interest you:");
+			System.out.println("Civil Engineer, Electrical Engineer, Environmental Engineer, Industrial Engineer, and Mechanical Engineer.");
+		}
+		else {
+			System.out.println("You have an affinity towards Mathematics!");
+			System.out.println("Here's a list of jobs that might interest you:");
+			System.out.println("Data Analyst, Actuary, Statistician, Game Designer, Data Scientist.");
+			
+		}
 	}
 }
