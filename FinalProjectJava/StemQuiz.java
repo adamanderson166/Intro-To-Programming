@@ -15,7 +15,7 @@ class CapitalQuiz {
 			int mathCount = 0;
 			int[] stemCount = {1,2,3,4};
 
-//This string contains each individual stem question. If you'd like to add more questions, simply add them towards the bottom of thi list.		
+//This string contains each individual stem question. If you'd like to add more questions, simply add them towards the bottom of the list.		
 			
 			String[] stemQuestions = 
 			{"I love learning about rockets. ",
