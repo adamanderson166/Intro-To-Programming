@@ -6,6 +6,8 @@ This program creates a Checking Account that extends from the Account parent cla
 
 
 public class CheckingAccount extends Account {
+	int overDraftLimit = 500;
+	
 	
 	public CheckingAccount() {
 		super();
@@ -21,7 +23,8 @@ public class CheckingAccount extends Account {
 	
 	@Override
 	public void withdraw(double amount) {
-		if (amount > (getBalance() - 500)) {
+		
+		if (amount > overDraftLimit) {
 			System.out.print("Your account has an overdrawn limit!");
 		}
 		
