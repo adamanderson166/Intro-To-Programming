@@ -3,11 +3,11 @@ public abstract class GeometricObject {
 	private boolean filled;
 	private java.util.Date dateCreated;
 	
-	public GeometricObject() {
+	protected GeometricObject() {
 		dateCreated = new java.util.Date();
 	}
 	
-	public GeometricObject(String color, boolean filled) {
+	protected GeometricObject(String color, boolean filled) {
 		dateCreated = new java.util.Date();
 		this.color = color;
 		this.filled = filled;
@@ -35,7 +35,7 @@ public abstract class GeometricObject {
 	
 	@Override
 	public String toString() {
-		return "created on " + dateCreated + "\ncolor: " + color + "\nfilled: " + filled;
+		return "created on " + dateCreated + "\ncolor: " + color + " and filled: " + filled;
 	}
 	
 	public abstract double getArea();
