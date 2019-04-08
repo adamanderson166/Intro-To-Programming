@@ -51,7 +51,8 @@ public class HealthSurveyFinalv1 extends Application {
 		"\nWhat is your plan to cope through your stress?",
 		"\nWhat have you tried to do to cope with your stress?",
 		"\nWhat is something you can do to prevent stress from happening?",
-		"\nCongrats, you've completed the Resilience Model!"
+		"\nCongrats, you've completed the Resilience Model!\nPress Enter to close the program...",
+		""
 	};
 
 	@Override
@@ -124,7 +125,7 @@ public class HealthSurveyFinalv1 extends Application {
 			}
 				// Once the program reaches the end, I'd like the file to record the data and print it to a file. I'm getting a null in the file however
 				
-				if (questionList[i] == questionList[6]) {
+				if (questionList[i] == questionList[7]) {
 					int j = 0;
 					try{
 						// Why is this not working???  String fileName = answerInput[0] + answerInput[1] + ".txt";
@@ -136,7 +137,7 @@ public class HealthSurveyFinalv1 extends Application {
 						outputStream.println("Here are the results for " + answerInput.get(0) + " on the date of " + answerInput.get(1));
 						outputStream.println("");
 						outputStream.println("");
-							for (i = 0; i < 6; i ++) {
+							for (i = 0; i < 7; i ++) {
 							outputStream.println(questionList[i]);
 							outputStream.println(answerInput.get(i).toString().replace("[", "").replace("]",""));
 							outputStream.println("");
