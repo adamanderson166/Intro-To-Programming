@@ -26,13 +26,19 @@ import java.io.PrintStream;
 import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileWriter;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import java.awt.*;
 
 public class HealthSurveyFinalv1 extends Application {
 	
 	Scanner input = new Scanner(System.in);
-	TextField centerTextField = new TextField();
-	Text questionLabel = new Text("\n\nWelcome to Life Launch Center's Resilience Model.\n                   Enter your name below:");
+	TextArea centerTextField = new TextArea();
+	
+	//ScrollPane scrollPane = new ScrollPane(centerTextField);
+	
+	Text questionLabel = new Text("\n\nWelcome to Life Launch Center's Resilience Model.\n                   Enter your name below:\n");
 	int i = 0;
 	
 	// ArrayList that holds answerInput (to print later)
@@ -55,7 +61,7 @@ public class HealthSurveyFinalv1 extends Application {
 
 		HBox hBoxQuestion = new HBox();
 		hBoxQuestion.setAlignment(Pos.CENTER);
-		centerTextField.setAlignment(Pos.CENTER);
+		//centerTextField.setAlignment(Pos.CENTER);
 		hBoxQuestion.getChildren().addAll(questionLabel);
 		
 		HBox hBoxCenter = new HBox();
@@ -76,7 +82,14 @@ public class HealthSurveyFinalv1 extends Application {
 	
 		btLeft.setOnAction(e -> changeQuestionBackward());
 		btRight.setOnAction(e -> changeQuestionForward());
-
+		
+		// Make question go forward if 'enter' is pressed
+		centerTextField.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.ENTER) {
+				changeQuestionForward();
+			}	
+		});
+		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(hBoxQuestion);
 		pane.setCenter(hBoxCenter);
@@ -93,59 +106,51 @@ public class HealthSurveyFinalv1 extends Application {
 		try {
 			Scanner input = new Scanner(System.in);
 			
-			String changedQuestion = questionLabel.toString();
-			changedQuestion = questionList[i + 1];
-			i += 1;
+			// Create an event for the "enter" function		
 			
-			String getTextInput = new String(centerTextField.getText());
-			answerInput.add(getTextInput);
-			questionLabel.setText(changedQuestion);
-			System.out.println(getTextInput.toString());
-			//Text changedQuestionText = new Text(changedQuestion);
-			System.out.println(changedQuestion);
-			centerTextField.setText("");
-		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("Congrats you've completed the survey! Your file is being saved to a file on your computer!");
-		}
-			// Once the program reaches the end, I'd like the file to record the data and print it to a file. I'm getting a null in the file however
-			
-			if (questionList[i] == questionList[6]) {
-				int j = 0;
-				try{
-					// Why is this not working???  String fileName = answerInput[0] + answerInput[1] + ".txt";
-					String fileName = "output.txt";
-					FileWriter fw = new FileWriter(fileName);
-					PrintWriter outputStream = new PrintWriter(fw);
-					
-					//Trying to make a for loop that will print question, then answerInput
-					
-					/*
-					for (i = 0; i < questionList.length; i++) {
-							for (j = 0; answerInput.size(); j++) {
-							outputStream.println(questionList[i] + answerInput[j]);
-							}
-					}
-					**/
-					
-					//printer for answers is working
-					outputStream.println("Here are the results for " + answerInput.get(0) + " on the date of " + answerInput.get(1));
-					outputStream.println("");
-					outputStream.println("");
-						for (i = 0; i < 6; i ++) {
-						outputStream.println(questionList[i]);
-						outputStream.println(answerInput.get(i).toString().replace("[", "").replace("]",""));
-						outputStream.println("");
-						}
-					outputStream.close();
-					
-					
-				}catch(FileNotFoundException e) {
-					System.out.println("File Not Found");
-				}catch(IOException e) {
-					System.out.println("IOException");
-				}
-				System.exit(0);
+				String changedQuestion = questionLabel.toString();
+				changedQuestion = questionList[i + 1];
+				i += 1;
+				
+				String getTextInput = new String(centerTextField.getText());
+				answerInput.add(getTextInput);
+				questionLabel.setText(changedQuestion);
+				System.out.println(getTextInput.toString());
+				//Text changedQuestionText = new Text(changedQuestion);
+				System.out.println(changedQuestion);
+				centerTextField.setText("");
+			} catch(ArrayIndexOutOfBoundsException e) {
+				System.out.println("Congrats you've completed the survey! Your file is being saved to a file on your computer!");
 			}
+				// Once the program reaches the end, I'd like the file to record the data and print it to a file. I'm getting a null in the file however
+				
+				if (questionList[i] == questionList[6]) {
+					int j = 0;
+					try{
+						// Why is this not working???  String fileName = answerInput[0] + answerInput[1] + ".txt";
+						String fileName = "output.txt";
+						FileWriter fw = new FileWriter(fileName);
+						PrintWriter outputStream = new PrintWriter(fw);
+						
+						//printer for answers is working
+						outputStream.println("Here are the results for " + answerInput.get(0) + " on the date of " + answerInput.get(1));
+						outputStream.println("");
+						outputStream.println("");
+							for (i = 0; i < 6; i ++) {
+							outputStream.println(questionList[i]);
+							outputStream.println(answerInput.get(i).toString().replace("[", "").replace("]",""));
+							outputStream.println("");
+							}
+						outputStream.close();
+						
+						
+					}catch(FileNotFoundException e) {
+						System.out.println("File Not Found");
+					}catch(IOException e) {
+						System.out.println("IOException");
+					}
+					System.exit(0);
+				}
 	}
 	
 	public void changeQuestionBackward() {
