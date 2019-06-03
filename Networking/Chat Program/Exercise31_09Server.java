@@ -66,11 +66,11 @@ public class Exercise31_09Server extends Application {
     taClient.setOnKeyPressed(e -> {
       if(e.getCode() == KeyCode.ENTER) {
         //System.out.println(taClient.getText());
-        String taClientNew = taClient.getText();
-        taClient.setText("\b");
-        taClient.setText(null);
+        String taClientNew = taClient.getText().trim();
+        taClient.setText("");
         try {
           outputToClient.writeUTF(taClientNew); // maybe add the getText to taServerNew??
+          taServer.appendText("S: " + taClientNew.toString() + "\n");
         }
         catch (IOException ex) {
         }
@@ -94,14 +94,14 @@ public class Exercise31_09Server extends Application {
           
           while (true) {
             // Receive info from the client
-            String taClient = inputFromClient.readUTF();
+            String taClient = inputFromClient.readUTF().trim();
             
             // Send info back to the client
            //outputToClient.writeUTF(taServer.getText());
 
             
             Platform.runLater(() -> {
-              taServer.appendText("S: " + taClient + "\n");
+              taServer.appendText("C: " + taClient + "\n");
             });
           }
       }
