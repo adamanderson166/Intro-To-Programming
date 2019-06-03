@@ -16,7 +16,7 @@ This program is unique because it allows the user to save and print a file of th
 The program is helpful because nothing like it exists that I’ve used. I’d love to be able to see report, or files, of my communication between people, and this would help solve that issue.
 
 ## Example Run
-<img src="ChatServerProject.png" />
+<img src="ChatServerImage.png" />
 
 ## Code Example
 This code is important because it creates a server socket and listens for a connection request.
