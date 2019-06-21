@@ -8,7 +8,7 @@ This repository holds my class assignments from CSCI 1105 - Introduction to Prog
 With all the debate and controversy surrounding Vaccinations, I thought it would be a good idea to create a tool that can helps new parents with the vaccination process. My tool will provide parents with a vaccination schedule as well as provide them with resources which help them learn about vaccinations.
 
 ## Example Run
-<img src="ResilienceModelScreenshot.png" />
+<img src="Vaccin8Image2.png" />
 
 ## Code Example
 This code is contains a TableView and a SetCellFactory function that takes the users information and puts it into a format that is understandable to user.
